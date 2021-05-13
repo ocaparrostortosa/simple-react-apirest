@@ -1,5 +1,5 @@
 import { Avatar, Button, Card, CardActions, CardContent, CardHeader, Grid, makeStyles, Typography } from '@material-ui/core';
-import { Email, Home, Phone } from '@material-ui/icons';
+import { Email, Home, Phone, WhatsApp } from '@material-ui/icons';
 import React, { useEffect, useState} from 'react';
 import CustomStyles from '../styles/CustomStyles';
 
@@ -28,6 +28,10 @@ const ListPage = () => {
 
     const sendEmail = (email) => {
         window.open('mailto:' + email + '?subject=Subject&body=Body%20goes%20here');
+    }
+
+    const sendWhatsAppMessage = (phone, message) => {
+        window.open('https://wa.me/' + phone + '?text=' + message);
     }
 
     return (
@@ -61,7 +65,8 @@ const ListPage = () => {
                         </CardContent>
                         {/* Acciones de la Tarjeta */}
                         <CardActions className={classes.cardActions}>                            
-                            <Button size="small" color="primary" onClick={() => sendEmail(aClient.email)}><Email/>Send-email</Button>                            
+                            <Button size="small" color="primary" onClick={() => sendEmail(aClient.email)}><Email/>Send-email</Button>
+                            <Button size="small" color="primary" onClick={() => sendWhatsAppMessage(aClient.phone)}><WhatsApp/>Send-WA Message</Button>                            
                         </CardActions>
                     </Card>
                 ))

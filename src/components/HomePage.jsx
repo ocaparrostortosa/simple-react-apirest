@@ -1,10 +1,10 @@
 import React from 'react'
+import FirestoreCollect from './FirestoreCollect'
+
 
 const HomePage = () => {
     return (
-        <div>
-            HomePage
-        </div>
+        <FirestoreCollect/>
     )
 }
 
