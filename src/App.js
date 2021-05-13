@@ -1,5 +1,5 @@
 import { AppBar, Toolbar } from "@material-ui/core";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 //Pages
 import AboutPage from "./components/AboutPage";
@@ -17,40 +17,40 @@ function App() {
     botonHome: "#ffffff",
     botonList: "#ffffff",
     botonAbout: "#ffffff",
-  });  
+  });
 
   const iconos = {
-    home: <Home/>,
-    list: <List/>,
-    about: <InfoOutlined/>
+    home: <Home />,
+    list: <List />,
+    about: <InfoOutlined />,
   };
 
   const handleClick = (data) => {
     switch (data) {
-      case 'Home':
+      case "Home":
         setColorBotones({
-          botonHome: '#12ffff',
+          botonHome: "#12ffff",
           botonList: "#ffffff",
-          botonAbout: "#ffffff"
+          botonAbout: "#ffffff",
         });
         break;
-      case 'About':
+      case "About":
         setColorBotones({
-          botonHome: '#ffffff',
+          botonHome: "#ffffff",
           botonList: "#ffffff",
-          botonAbout: "#12ffff"
+          botonAbout: "#12ffff",
         });
         break;
-      case 'List':
+      case "List":
         setColorBotones({
-          botonHome: '#ffffff',
+          botonHome: "#ffffff",
           botonList: "#12ffff",
-          botonAbout: "#ffffff"
+          botonAbout: "#ffffff",
         });
         break;
       default:
         break;
-    }     
+    }
   };
 
   return (
@@ -61,13 +61,28 @@ function App() {
         <AppBar position="static">
           <Toolbar>
             <Link to="/" style={custom.link}>
-              <ButtonStyle label="Home" colorB={colorBotones.botonHome} handleClick={handleClick} icon={iconos.home}/>
+              <ButtonStyle
+                label="Home"
+                colorB={colorBotones.botonHome}
+                icon={iconos.home}
+                handleClick={handleClick}
+              />
             </Link>
             <Link to="/list" style={custom.link}>
-              <ButtonStyle label="List" colorB={colorBotones.botonList} handleClick={handleClick} icon={iconos.list}/>
+              <ButtonStyle
+                label="List"
+                colorB={colorBotones.botonList}
+                icon={iconos.list}
+                handleClick={handleClick}
+              />
             </Link>
             <Link to="/about" style={custom.link}>
-              <ButtonStyle label="About" colorB={colorBotones.botonAbout} handleClick={handleClick} icon={iconos.about}/>
+              <ButtonStyle
+                label="About"
+                colorB={colorBotones.botonAbout}
+                icon={iconos.about}
+                handleClick={handleClick}
+              />
             </Link>
           </Toolbar>
         </AppBar>
