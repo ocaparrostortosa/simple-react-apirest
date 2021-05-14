@@ -1,7 +1,8 @@
 import { Avatar, Button, Card, CardActions, CardContent, CardHeader, Grid, makeStyles, Typography } from '@material-ui/core';
 import { Email, Home, Phone, WhatsApp } from '@material-ui/icons';
-import React, { useEffect, useState} from 'react';
+import React, { Fragment, useEffect, useState} from 'react';
 import CustomStyles from '../styles/CustomStyles';
+import ListPageActions from './ListPageActions';
 
 const ListPage = () => {
 
@@ -35,7 +36,8 @@ const ListPage = () => {
     }
 
     return (
-        <div>
+        <Fragment>
+            <ListPageActions/>
             {
                 clients.map(aClient => (
                     // Dentro de las cards, podemos definir el contenido con <CardContent/> y las acciones con
@@ -71,7 +73,7 @@ const ListPage = () => {
                     </Card>
                 ))
             }
-        </div>
+        </Fragment>
     )
 }
 

@@ -1,6 +1,8 @@
+import { green} from "@material-ui/core/colors";
+
 const CustomStyles = () => {
 
-    
+
 
     const useStyles = {
         link: {
@@ -14,8 +16,8 @@ const CustomStyles = () => {
             textDecoration: 'none',
         },
         cardStyles: {
-            minWidth: 275,  
-            margin: '1rem'          
+            minWidth: 275,
+            margin: '1rem',
         },
         title: {
             fontSize: 15,
@@ -42,7 +44,7 @@ const CustomStyles = () => {
             paddingTop: '0.1rem',
             paddingBottom: '0.1rem',
             margin: '0rem',
-        },        
+        },
         cardActions: {
             paddingTop: '0.1rem',
             margin: '0rem',
@@ -52,6 +54,18 @@ const CustomStyles = () => {
             paddingLeft: '0.2rem',
             margin: '0rem',
             fontStyle: 'oblique',
+        },
+        buttonBox: {
+            justifyContent: "space-between",
+            alignItems: "center",            
+            display: "flex"
+        },
+        newClientCard: {            
+            background: green[100]
+        },
+        newClientCardHeader: {            
+            background: green[100],
+            color: "#ffffff"
         }
     };
 

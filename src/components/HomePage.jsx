@@ -1,10 +1,10 @@
 import React from 'react'
-import FirestoreCollect from './FirestoreCollect'
+import FireClientList from '../service/FireClientList'
 
 
 const HomePage = () => {
     return (
-        <FirestoreCollect/>
+        <FireClientList/>
     )
 }
 

@@ -1,13 +1,12 @@
 import React from 'react'
 import { FirestoreCollection } from 'react-firestore';
 
-const FirestoreCollect = () => {
+const FireClientList = () => {
     return (
         <FirestoreCollection
 
             path="stories"            
-            render={({ isLoading, data }) => {
-                console.log(data);
+            render={({ isLoading, data }) => {                
                 return isLoading ? (
                     <h1>Cargando</h1>
                 ) : (
@@ -29,4 +28,4 @@ const FirestoreCollect = () => {
     )
 }
 
-export default FirestoreCollect;
+export default FireClientList;

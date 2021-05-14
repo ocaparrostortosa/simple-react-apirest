@@ -13,6 +13,7 @@ import { Home, InfoOutlined, List } from "@material-ui/icons";
 function App() {
   const custom = CustomStyles();
 
+  //Tratamiento para los botones de la Toolbar
   const [colorBotones, setColorBotones] = useState({
     botonHome: "#ffffff",
     botonList: "#ffffff",
@@ -52,6 +53,7 @@ function App() {
         break;
     }
   };
+  // fin tratamiento toolbar
 
   return (
     <Router>
