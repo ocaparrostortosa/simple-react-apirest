@@ -37,6 +37,7 @@ const ListPage = () => {
 
     return (
         <Fragment>
+            {/* Componente sencillo para mostrar una caja para añadir usuarios */}
             <ListPageActions/>
             {
                 clients.map(aClient => (

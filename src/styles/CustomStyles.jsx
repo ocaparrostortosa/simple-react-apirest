@@ -66,6 +66,11 @@ const CustomStyles = () => {
         newClientCardHeader: {            
             background: green[100],
             color: "#ffffff"
+        },
+        formTitle: {
+            variant: "outlined",
+            textShadow: '1px 1.5px rgba(150, 150, 150, .5)',
+            fontSize: 24
         }
     };
 
