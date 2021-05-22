@@ -7,7 +7,7 @@ import { Fragment } from 'react';
 import NewClientCard from './NewClientCard';
 import firebase from "@firebase/app";
 
-const ListPageActions = () => {
+const ListPageActions = (props) => {
 
     const customStyle = makeStyles(CustomStyles());
     const classes = customStyle();
@@ -40,7 +40,7 @@ const ListPageActions = () => {
                 m={1} //margin
                 className={classes.buttonBox}
             >
-                <Button><List />Filter</Button>
+                <Button onClick={() => props.changeSortFilter()}><List />Filter</Button>
                 <Button
                     variant="contained"
                     color="secondary"

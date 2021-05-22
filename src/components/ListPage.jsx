@@ -1,6 +1,6 @@
 import { Avatar, Button, Card, CardActions, CardContent, CardHeader, Grid, makeStyles, Typography } from '@material-ui/core';
 import { Drafts, Email, Home, Phone, WhatsApp } from '@material-ui/icons';
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import CustomStyles from '../styles/CustomStyles';
 import ListPageActions from './ListPageActions';
 
@@ -39,13 +39,26 @@ const ListPage = () => {
         window.open('https://wa.me/' + phone);
     }
 
+    const [sortFilter, setSortFilter] = useState("asc");
+
+    const changeSortFilter = () => {
+        // Cambiar los filtros e intentar jugar con ellos.
+        //Para agregar más filtro solo hay que concatenarlos con ","
+        if(sortFilter == "asc"){
+            setSortFilter("desc");
+        }else{
+            setSortFilter("asc");
+        }
+        
+    }
+
     return (
         <Fragment>
             {/* Componente sencillo para mostrar una caja para añadir usuarios */}
-            <ListPageActions />
+            <ListPageActions changeSortFilter={changeSortFilter}/>
             <FirestoreCollection
                 path="clients"
-                sort="currentTime:desc"
+                sort={"currentTime:" + sortFilter}
                 render={({ isLoading, data }) => {
                     return isLoading ? (
                         <h1>Cargando</h1>
