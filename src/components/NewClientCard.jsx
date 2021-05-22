@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import MuiPhoneNumber from "material-ui-phone-number";
 import { Button, Card, CardContent, CardHeader, Grid, makeStyles, TextField, Typography } from '@material-ui/core';
-
 import { useForm } from 'react-hook-form';
 import CustomStyles from '../styles/CustomStyles';
 import { Close, Done } from '@material-ui/icons';
@@ -14,35 +13,53 @@ const NewClientCard = (props) => {
     // React Hook Form
     const { register, handleSubmit, formState: { errors } } = useForm();
 
-    const [newClient, setNewClient] = useState({
-        name: "",
-        subname: "",
-        phone: "",
-        email: "",
-        adrress: ""
-    })
-
-    const onSubmit = (data) => {
-        setNewClient({
-            name: data.name,
-            subname: data.subname,
-            phone: Phone.replace(/ +/g, ""),
-            email: data.email,
-            address: data.address
-        });
-        props.saveNewClient(newClient);        
+    //Submit para el nuevo cliente
+    // Guardar nuevo cliente en Firebase    
+    const onSubmit = (clientData) => {
+        const client = {
+            name: clientData.name,
+            subname: clientData.subname,
+            phone: Phone,
+            email: clientData.email,
+            address: clientData.address,
+            currentTime: currentTime()
+        };
+        //console.log(client);
+        props.addClientFirestore(client);
+        props.changeNewClientCardVisibility(!props.newCardVisibility);
     }
 
-    const [Phone, setPhone] = useState();
+    const [Phone, setPhone] = useState('');
     const phoneChange = (phoneNumber) => {
-        setPhone(phoneNumber);
+        if (phoneNumber) {
+            setPhone(phoneNumber.replace(/ +/g, ""));
+        }
     }
 
-    //Function to cancel actions
+    function currentTime() {
+        var currentDate = new Date();
+        return checkNumberValue(currentDate.getDate()) + "" +
+            checkNumberValue(currentDate.getMonth()) + "" +
+            currentDate.getFullYear() + "" +
+            checkNumberValue(currentDate.getHours()) + "" +
+            checkNumberValue(currentDate.getMinutes()) + "" +
+            checkNumberValue(currentDate.getSeconds()) + "";
+    }
+
+    function checkNumberValue(object) {
+        var finalValue = "";
+        if (object < 10) {
+            finalValue = "0" + object;
+        } else {
+            finalValue = object;
+        }
+        return finalValue;
+    }
+
+    //Function to cancel action
     const cancelAction = () => {
         props.changeNewClientCardVisibility(!props.newCardVisibility)
     }
-
 
     return (
         <Card className={classes.cardStyles}>

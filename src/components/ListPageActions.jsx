@@ -5,6 +5,7 @@ import CustomStyles from '../styles/CustomStyles';
 import { Fragment } from 'react';
 
 import NewClientCard from './NewClientCard';
+import firebase from "@firebase/app";
 
 const ListPageActions = () => {
 
@@ -13,15 +14,21 @@ const ListPageActions = () => {
 
     const [newCardVisibility, setNewCardVisbility] = useState(false);
 
-
     const changeNewClientCardVisibility = (state) => {
         setNewCardVisbility(state);
     }
 
-    // Guardar nuevo cliente en Firebase
-    const saveNewClient = (data) => {
-        console.log("data");
-        console.log(data);
+    // Guardar nuevo cliente en Firebase   
+    var firestoreRef = firebase.firestore().collection("/clients");
+
+    const addClientFirestore = (data) => {        
+        firestoreRef.add(data).then(function (docRef) {
+            console.log("Client added with ID: ", docRef.id);
+        })
+            .catch(function (error) {
+                console.error("Error adding Client: ", error);
+            });;
+        
     }
 
     return (
@@ -42,7 +49,7 @@ const ListPageActions = () => {
             </Box>
             {
                 (newCardVisibility) ? (
-                    <NewClientCard saveNewClient={saveNewClient} changeNewClientCardVisibility={changeNewClientCardVisibility} newCardVisibility={newCardVisibility}/>
+                    <NewClientCard addClientFirestore={addClientFirestore} changeNewClientCardVisibility={changeNewClientCardVisibility} newCardVisibility={newCardVisibility}/>
                 ) : (<div />)
             }
 
