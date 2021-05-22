@@ -61,17 +61,56 @@ const CustomStyles = () => {
             display: "flex"
         },
         newClientCard: {            
-            background: green[100]
+            background: green[100],
+            padding: "0.5px 16px 0.5px 16px"        
         },
         newClientCardHeader: {            
             background: green[100],
-            color: "#ffffff"
+            color: "#ffffff",
+            paddingBottom: 1
         },
         formTitle: {
             variant: "outlined",
             textShadow: '1px 1.5px rgba(150, 150, 150, .5)',
-            fontSize: 24
-        }
+            fontSize: 24            
+        },
+        formSubtitle: {
+            fontSize: 15
+        },
+        formTextField: {
+            width: "80%",
+            marginTop: 10
+        },
+        formPhone: {
+            width: "85%",
+            marginTop: 10,
+            marginBottom: 0
+        },
+        errorMessage: {
+            color: "#bf1650"
+        },
+        addClientButton: {
+            background: "#008000",
+            color: 'white',
+            '&:hover': {
+                background: "#87B676",
+             },
+             marginRight: 10
+        },
+        cancelClientButton:{
+            background: "red",
+            color: 'white',
+            '&:hover': {
+                background: "#C6625E",
+             },
+             marginLeft: 10
+        },
+        clientButtonBox: {
+            justifyContent: "flex-end",
+            alignItems: "center",            
+            display: "flex",
+            paddingTop: 20
+        },
     };
 
     return (

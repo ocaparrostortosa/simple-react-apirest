@@ -1,9 +1,10 @@
-import { Box, Button, Card, CardContent, CardHeader, makeStyles, Typography } from '@material-ui/core';
+import { Box, Button, makeStyles } from '@material-ui/core';
 import { Add, List } from '@material-ui/icons';
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import CustomStyles from '../styles/CustomStyles';
 import { Fragment } from 'react';
-import {useForm} from 'react-hook-form';
+
+import NewClientCard from './NewClientCard';
 
 const ListPageActions = () => {
 
@@ -15,6 +16,12 @@ const ListPageActions = () => {
 
     const changeNewClientCardVisibility = (state) => {
         setNewCardVisbility(state);
+    }
+
+    // Guardar nuevo cliente en Firebase
+    const saveNewClient = (data) => {
+        console.log("data");
+        console.log(data);
     }
 
     return (
@@ -30,18 +37,12 @@ const ListPageActions = () => {
                 <Button
                     variant="contained"
                     color="secondary"
-                    className={classes.addClientButton}
                     onClick={() => changeNewClientCardVisibility(!newCardVisibility)}
                 > <Add />Add client</Button >
             </Box>
             {
                 (newCardVisibility) ? (
-                    <Card className={classes.cardStyles}>
-                        <CardHeader title={<Typography className={classes.formTitle}>Add new client</Typography>} className={classes.newClientCardHeader} />
-                        <CardContent className={classes.newClientCard}>
-                            {/* Agregar useForm para el formulario de nuevo cliente */}
-                        </CardContent>
-                    </Card>
+                    <NewClientCard saveNewClient={saveNewClient} changeNewClientCardVisibility={changeNewClientCardVisibility} newCardVisibility={newCardVisibility}/>
                 ) : (<div />)
             }
 

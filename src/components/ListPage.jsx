@@ -67,9 +67,13 @@ const ListPage = () => {
                             </Grid>
                         </CardContent>
                         {/* Acciones de la Tarjeta */}
-                        <CardActions className={classes.cardActions}>                            
-                            <Button size="small" color="primary" onClick={() => sendEmail(aClient.email)}><Email/>Send-email</Button>
-                            <Button size="small" color="primary" onClick={() => sendWhatsAppMessage(aClient.phone)}><WhatsApp/>Send-WA Message</Button>                            
+                        <CardActions className={classes.cardActions}>
+                            {
+                                (aClient.email) ? <Button size="small" color="primary" onClick={() => sendEmail(aClient.email)}><Email/>Send-email</Button> : <div/>
+                            }        
+                            {
+                                (aClient.phone) ? <Button size="small" color="primary" onClick={() => sendWhatsAppMessage(aClient.phone)}><WhatsApp/>Send-WA Message</Button> : <div/>
+                            } 
                         </CardActions>
                     </Card>
                 ))

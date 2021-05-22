@@ -1,5 +1,5 @@
 import { AppBar, Toolbar } from "@material-ui/core";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 //Pages
 import AboutPage from "./components/AboutPage";

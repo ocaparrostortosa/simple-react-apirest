@@ -1,11 +1,9 @@
 import React from 'react';
 import firebase from "@firebase/app";
-import { Button } from '@material-ui/core';
-import { v4 as uuidv4 } from 'uuid';
 
 const FireClientAdd = () => {
 
-    var firestoreRef = firebase.firestore().collection("/stories");
+    var firestoreRef = firebase.firestore().collection("/clients");
     
     const addClientFirestore = (data) => {        
         firestoreRef.add(data).then(function (docRef) {
