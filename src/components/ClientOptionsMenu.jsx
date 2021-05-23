@@ -1,12 +1,12 @@
 import { IconButton, makeStyles, Menu, MenuItem, Typography } from '@material-ui/core'
-import { Cancel, CheckCircle, Delete, MoreVert } from '@material-ui/icons';
+import { Cancel, CheckCircle, Delete, Edit, MoreVert } from '@material-ui/icons';
 import React, { useState } from 'react'
 import { Fragment } from 'react';
 import CustomStyles from '../styles/CustomStyles';
 
 import firebase from "@firebase/app";
 
-const DeleteMenu = (props) => {
+const ClientOptionsMenu = (props) => {
 
     const customStyle = makeStyles(CustomStyles());
     const classes = customStyle();
@@ -37,6 +37,11 @@ const DeleteMenu = (props) => {
         })
     }
 
+    const updateClientOption = () => {
+        props.setClientUpdate(props.client);
+        handleClose();
+    }
+
     return (
         <Fragment>
             <IconButton aria-label="settings" onClick={handleClick}><MoreVert /></IconButton>
@@ -47,12 +52,13 @@ const DeleteMenu = (props) => {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
             >
+                <MenuItem onClick={() => updateClientOption()}><Edit/><Typography>Edit client</Typography></MenuItem>
                 <MenuItem onClick={() => setbMostramosItem(!bMostramosItem)}><Delete className={classes.errorMessage} /><Typography className={classes.errorMessage}>Delete client</Typography></MenuItem>
                 {
                     (bMostramosItem) ?
                         (
                             <MenuItem>
-                                <IconButton aria-label="upload picture" onClick={() => deleteClient(props.clientId)} className={classes.addClientButton}><CheckCircle/></IconButton>
+                                <IconButton aria-label="upload picture" onClick={() => deleteClient(props.client.id)} className={classes.addClientButton}><CheckCircle/></IconButton>
                                 <IconButton aria-label="upload picture" onClick={handleClose} className={classes.cancelClientButton}><Cancel/></IconButton>
                             </MenuItem>
                         )
@@ -64,4 +70,4 @@ const DeleteMenu = (props) => {
     )
 }
 
-export default DeleteMenu
+export default ClientOptionsMenu

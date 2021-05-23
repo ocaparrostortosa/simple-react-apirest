@@ -5,7 +5,7 @@ import CustomStyles from '../styles/CustomStyles';
 import ListPageActions from './ListPageActions';
 
 import { FirestoreCollection } from 'react-firestore';
-import DeleteMenu from './DeleteMenu';
+import ClientOptionsMenu from './ClientOptionsMenu';
 
 const ListPage = () => {
 
@@ -44,18 +44,28 @@ const ListPage = () => {
     const changeSortFilter = () => {
         // Cambiar los filtros e intentar jugar con ellos.
         //Para agregar más filtro solo hay que concatenarlos con ","
-        if(sortFilter == "asc"){
+        if(sortFilter === "asc"){
             setSortFilter("desc");
         }else{
             setSortFilter("asc");
         }
         
     }
+    
+    //Cuando seleccionemos la opción de Actualizar Cliente (Update) cambiaremos el valor del estado
+    const [clientUpdate, setClientUpdate] = useState({        
+        name: "",
+        subname: "",
+        phone: "",
+        email: "",
+        address: "",
+        currentTime: ""
+    });
 
     return (
         <Fragment>
             {/* Componente sencillo para mostrar una caja para añadir usuarios */}
-            <ListPageActions changeSortFilter={changeSortFilter}/>
+            <ListPageActions changeSortFilter={changeSortFilter} clientToUpdate={clientUpdate} setClientUpdate={setClientUpdate}/>
             <FirestoreCollection
                 path="clients"
                 sort={"currentTime:" + sortFilter}
@@ -78,7 +88,7 @@ const ListPage = () => {
                                             title={<Typography className={classes.title}>{aClient.name}</Typography>}
                                             subheader={aClient.subname}
                                             className={classes.cardHeader}
-                                            action={<DeleteMenu clientId={aClient.id}/>}
+                                            action={<ClientOptionsMenu client={aClient} setClientUpdate={setClientUpdate}/>}
                                         />
                                         {/* Contenido de la Tarjeta */}
                                         <CardContent className={classes.cardContent}>

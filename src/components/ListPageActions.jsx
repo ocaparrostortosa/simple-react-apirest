@@ -21,14 +21,14 @@ const ListPageActions = (props) => {
     // Guardar nuevo cliente en Firebase   
     var firestoreRef = firebase.firestore().collection("/clients");
 
-    const addClientFirestore = (data) => {        
+    const addClientFirestore = (data) => {
         firestoreRef.add(data).then(function (docRef) {
             console.log("Client added with ID: ", docRef.id);
         })
             .catch(function (error) {
                 console.error("Error adding Client: ", error);
             });;
-        
+
     }
 
     return (
@@ -48,8 +48,14 @@ const ListPageActions = (props) => {
                 > <Add />Add client</Button >
             </Box>
             {
-                (newCardVisibility) ? (
-                    <NewClientCard addClientFirestore={addClientFirestore} changeNewClientCardVisibility={changeNewClientCardVisibility} newCardVisibility={newCardVisibility}/>
+                (newCardVisibility || (props.clientToUpdate.id != null)) ? (
+                    <NewClientCard
+                        addClientFirestore={addClientFirestore}
+                        changeNewClientCardVisibility={changeNewClientCardVisibility}
+                        newCardVisibility={newCardVisibility} 
+                        clientToUpdate={props.clientToUpdate}
+                        setClientUpdate={props.setClientUpdate}
+                    />
                 ) : (<div />)
             }
 
