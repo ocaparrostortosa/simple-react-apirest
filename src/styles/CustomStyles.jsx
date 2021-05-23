@@ -111,6 +111,12 @@ const CustomStyles = () => {
             display: "flex",
             paddingTop: 20
         },
+        circleProgressBox: {
+            justifyContent: "center",
+            alignItems: "center",            
+            display: "flex",
+            paddingTop: 20
+        }
     };
 
     return (

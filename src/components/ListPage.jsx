@@ -1,4 +1,4 @@
-import { Avatar, Button, Card, CardActions, CardContent, CardHeader, Grid, makeStyles, Typography } from '@material-ui/core';
+import { Avatar, Box, Button, Card, CardActions, CardContent, CardHeader, CircularProgress, Grid, makeStyles, Typography } from '@material-ui/core';
 import { Drafts, Email, Home, Phone, WhatsApp } from '@material-ui/icons';
 import React, { Fragment, useState } from 'react';
 import CustomStyles from '../styles/CustomStyles';
@@ -61,7 +61,10 @@ const ListPage = () => {
                 sort={"currentTime:" + sortFilter}
                 render={({ isLoading, data }) => {
                     return isLoading ? (
-                        <h1>Cargando</h1>
+                        <Box component="span"
+                            m={1} //margin
+                            className={classes.circleProgressBox}
+                        ><CircularProgress/></Box>
                     ) : (<div>
                         {
                             (Object.keys(data).length) ? (
@@ -111,10 +114,12 @@ const ListPage = () => {
                                             }
                                         </CardActions>
                                     </Card>
+                                    
                                 ))
-
+                                            
                             ) : (<Typography>You still don't have clients! :(</Typography>)
                         }
+                        
                     </div>)
                 }}
             />
