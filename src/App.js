@@ -78,14 +78,15 @@ function App() {
                 handleClick={handleClick}
               />
             </Link>
-            <Link to="/about" style={custom.link}>
+            
               <ButtonStyle
                 label="About"
                 colorB={colorBotones.botonAbout}
                 icon={iconos.about}
-                handleClick={handleClick}
+                handleClick={() => window.open('https://www.linkedin.com/in/ocaparrostortosa/', '_blank')}
+               
               />
-            </Link>
+            
           </Toolbar>
         </AppBar>
         {/* El Switch es el contenedor de los componentes Route, los cuales se definen de más detallados a más globales */}

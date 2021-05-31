@@ -117,6 +117,7 @@ const CustomStyles = () => {
             display: "flex",
             paddingTop: 20
         }
+        
     };
 
     return (
