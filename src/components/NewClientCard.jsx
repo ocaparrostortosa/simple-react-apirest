@@ -84,7 +84,7 @@ const NewClientCard = (props) => {
                         <Grid container item xs={6} direction="column">
 
                             {/* Client name */}
-                            <TextField id="outline-primary" label="Name" color="primary" value={props.clientToUpdate.name}
+                            <TextField id="outline-primary" label="Name" color="primary" defaultValue={props.clientToUpdate.name}
                                 type="text" className={classes.formTextField}
                                 {...register("name", {
                                     required: true,
@@ -95,7 +95,7 @@ const NewClientCard = (props) => {
                             {errors.name && errors.name?.type === 'minLength' && <Typography className={classes.errorMessage}>This input must exceed 4 characters</Typography>}
 
                             {/* Client email */}
-                            <TextField id="outline-primary" label="Email" color="primary" value={props.clientToUpdate.email}
+                            <TextField id="outline-primary" label="Email" color="primary" defaultValue={props.clientToUpdate.email}
                                 type="email" className={classes.formTextField}
                                 {...register("email", {
                                     required: true,
@@ -111,7 +111,7 @@ const NewClientCard = (props) => {
                                 label="Address"
                                 color="primary"
                                 type="text"
-                                value={props.clientToUpdate.address}
+                                defaultValue={props.clientToUpdate.address}
                                 className={classes.formTextField}
                                 {...register("address", {
                                     required: true,
@@ -129,7 +129,7 @@ const NewClientCard = (props) => {
                                 label="Subname"
                                 color="primary"
                                 type="text"
-                                value={props.clientToUpdate.subname}
+                                defaultValue={props.clientToUpdate.subname}
                                 className={classes.formTextField}
                                 {...register("subname", {
                                     required: true,
