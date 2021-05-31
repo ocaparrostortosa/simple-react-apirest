@@ -3,7 +3,7 @@
 Español 
 ==================
 
-React Apirest es una aplicación de ReactJS para poder crear, listar, editar y eliminar clientes/usuarios. De forma adicional, la aplicación te permite enviar correos o mensajes vía WhatsApp a través de la información del cliente (email y teléfono).
+React Apirest es una aplicación de ReactJS, basado en Hooks y el uso de estados, para poder crear, listar, editar y eliminar clientes/usuarios. De forma adicional, la aplicación te permite enviar correos o mensajes vía WhatsApp a través de la información del cliente (email y teléfono).
 Realizada por Óscar Caparrós de forma autodidacta para la formación, comprensión y aplicación de la tecnología ReactJS.
  
  Dependencias npm
